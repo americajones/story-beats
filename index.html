@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="plain-draggable-min.js"></script>
+    <script src="leader-line-min.js"></script>
+    <title>Story Beats</title>
+</head>
+
+<body>
+    <nav>
+        <div id="sidenav" class="sidenav">
+            <a href="javascript:void(0)" id="sidenavbutt" class="closebutt secret" onclick="closeNav()">&times;</a>
+            <div class="addBox">
+                <button id="massSave" onclick="saveAll()">save all</button>
+                <p>add box:</p>
+                <button class="add" onclick="spawnBox()">+</button>
+            </div>
+            <br>
+            <div class="addBoxSettings secret">
+                <p>add box settings:</p>
+                <button>box color</button>
+                <button>box size</button>
+                <p>add line settings:</p>
+                <button>line size</button>
+            </div>
+            <div class="editBox secret">
+                <p>edit selected box:</p>
+                <input id="titleEdit">
+                <textarea id="textEdit"></textarea>
+                <button id="smallSave" onclick="saveChanges()">save box changes</button>
+            </div>
+        </div>
+        <button class="open butt" onclick="openNav()">➔</button>
+    </nav>
+    <div class="mainBox">
+
+        <!-- <div class="beatBox" id="0">
+            <h2>le title</h2>
+            <p>aaaaaaaaa aaaaaaaaaaaaaaa aaaa aaa aa aaa a a aaaaaa aaaaa aaa a a a a a aaaaaaaa aaaaa aa a aaaaaa aaa
+                aaaaaa aaaaaa aa aaaa a aa a aaa aaaaaa aa aa aaaaaaa aaa a aaaa
+                aaa aaaaaa aa aaaa a aaa aaaaa a aaaaaaaa a
+                aaaaaa aaaa aaaa aaaaaaaa aaaaaa a a aa aaaaaaaaa.</p>
+        </div>
+        <div class="beatBox" id="1">
+            <h2></h2>
+            <p>bb bbbbbbb bbb bb bb bb b b bbbbb bbbb bb bbbb bbb bbbbbb bbbbbb bbbb bb b b bbbbbb bbbbbbbbbbbbb.</p>
+        </div>
+        <div class="beatBox" id="2">
+            <h2>le nother title</h2>
+            <p>cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc.
+                ccccccccccccccccc cc c.
+                cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc.
+            </p>
+        </div> -->
+
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
