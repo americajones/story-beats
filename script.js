@@ -84,12 +84,9 @@ function saveChanges() {
 let saveList = [];
 let lineList = [];
 function saveAll() {
-    // let svgLines = Array.from(document.querySelectorAll('svg'));
-    // svgLines.shift();
     saveList = [];
     lineList = [];
     cards.forEach(item => {
-        // let position = draggable.position()
         // console.log(item);
         // console.log(item.innerHTML);
         // console.log(item.attributes);
@@ -98,11 +95,6 @@ function saveAll() {
         // console.log("classes= ", item.attributes.class.value);
         saveList.push(new storyBoxInfo(item.attributes.id.value, item.attributes.class.value, item.attributes.style.value, item.innerHTML));
     });
-    // svgLines.forEach(line => {
-    //     console.log("LINESTUFF: ", line);
-    //     console.log("LINE style: ", line.style);
-    //     lineList.push(new lineBoxInfo(line.innerHTML, line.style));
-    // })
     saveLines();
     localStorage.setItem('myStoryItems', JSON.stringify(saveList));
     // localStorage.setItem('myStoryLineItems', JSON.stringify(lineList));
@@ -130,6 +122,7 @@ function spawnBox() {
     let nuBox = document.createElement('div');
     let nuNode = document.createElement('div');
     let nuNode2 = document.createElement('div');
+    let nuNode3 = document.createElement('div');
     let nuTit = document.createElement('h2');
     let nuText = document.createElement('p');
     let nuId = cards.length + 1;
@@ -138,8 +131,10 @@ function spawnBox() {
     nuNode2.classList.add('lineNode');
     nuNode2.classList.add('right');
     nuBox.id = nuId;
+    nuNode3.classList.add('label');
+    nuNode3.textContent = nuId;
     nuBox.classList.add('beatBox');
-    nuBox.append(nuTit, nuText);
+    nuBox.append(nuNode3, nuTit, nuText);
     nuBox.append(nuNode, nuNode2);
     makeDraggable(nuBox);
     mainBox.append(nuBox);
@@ -266,7 +261,6 @@ function loadLines(array) {
     // console.log(div0, " and ", div2);
     makeOldLine(div0, div2);
 }
-
 document.addEventListener('click', function (e) {
     if (e.target.classList.contains('lineNode') && !e.ctrlKey && startPoint !== "") {
         endPoint = e.target;
@@ -276,15 +270,58 @@ document.addEventListener('click', function (e) {
         return lineIdNum2;
     }
 })
-window.onkeydown = function (event) {
-    if (event.keyCode === 32) {
-        event.preventDefault();
-    }
-};
-// document.addEventListener('click', function (e) {
-//     if (e.currentTarget !== isSelected) {
-//         cards.forEach(card => card.classList.remove('selected'))
-//     }
+// let activeClick = false;
+// mainBox.addEventListener('mousedown', function () {
+//     activeClick = true;
 // })
+// mainBox.addEventListener('mouseup', function () {
+//     activeClick = false;
+// })
+// window.onkeydown = function (event) {
+//     if (event.keyCode === 32) {
+//         event.preventDefault();
+//         mainBox.style.cursor = "grab";
+//     } else if (event.keyCode === 32 && activeClick) {
+//         mainBox.style.cursor = "grabbing";
+//     }
+// };
+// window.onkeyup = function (event) {
+//     if (event.keyCode === 32) {
+//         event.preventDefault();
+//         console.log("SPACEDOWN")
+//         mainBox.style.cursor = "default";
+//     }
+// };
 
 //sidenav if closed clikc open
+
+
+//export all -copy to clipboard
+let exportList
+function concatinate() {
+    exportList = [];
+    cards.forEach(item => {
+        console.log(item);
+        console.log(item.innerText);
+        // console.log(item.attributes);
+        // console.log("ID= ", item.attributes.id);
+        // console.log("ID VALUE= ", item.attributes.id.value);
+        // console.log("classes= ", item.attributes.class.value);
+        exportList.push(item.innerText + "\n_____\n\n\n");
+    });
+    let convertedList = exportList.toString();
+    copyToClipboard(convertedList);
+}
+
+const copyToClipboard = str => {
+    const el = document.createElement('textarea');
+    el.value = str;
+    el.setAttribute('readonly', '');
+    el.style.position = 'absolute';
+    el.style.left = '-9999px';
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+    alert("All text copied to clipboard!");
+};
