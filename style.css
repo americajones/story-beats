@@ -20,14 +20,7 @@ body {
     padding: 10px;
     margin-bottom: 2rem;
 }
-#smallSave:hover {
-    font-weight: 600;
-}
-#smallSave {
-    border: none;
-    background-color: rgb(112, 209, 161);
-    padding: 10px
-}
+
 
 .beatBox {
     flex: none;
@@ -64,32 +57,40 @@ body {
     right: -20px;
 }
 .selected {
-    box-shadow: 50px grey;
+    border: 50px grey;
+    background-color: rgba(255, 0, 212, 0.35);
 }
 .open:hover {
     font-weight: 600;
 }
 .open {
     border: none;
-    position: fixed;
+    position: absolute;
     z-index: 3;
-    margin-left: 5vw;
     padding: 10px;
+    right: -40px;
+    top: 1rem;
     border-radius: 50%;
 }
-.sidenav {
+nav {
     height: 100%;
     width: 5vw;
+    min-width: 75px;
     position: fixed;
     z-index: 4;
     top: 0;
     left: 0;
     background-color: rgb(17, 17, 17, .8);
-    overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 60px;
     transition: 0.2s; 
 }
-.sidenav a {
+.sidenav {
+    overflow-x: hidden; /* Disable horizontal scroll */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+nav a {
       padding: 8px 8px 8px 32px;
       text-decoration: none;
       font-size: 25px;
@@ -97,10 +98,10 @@ body {
       display: block;
       transition: 0.3s;
 }
-.sidenav a:hover {
+nav a:hover {
     color: #f1f1f1;
 }
-.sidenav .closebutt {
+nav .closebutt {
     position: absolute;
     top: 0;
     right: 25px;
@@ -118,14 +119,25 @@ body {
     padding: 1rem;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
-
+#smallSave:hover {
+    font-weight: 600;
+}
+#smallSave {
+    border: none;
+    background-color: rgb(199, 227, 158);
+    padding: 10px;
+    width: 80%;
+}
 .secret {
     visibility: hidden;
 }
 #titleEdit {
     font-size: 20px;
     padding: 4px;
+    width: 100%;
+    margin-bottom: .5rem;
 }
 #textEdit {
     font-size: 15px;
@@ -133,6 +145,7 @@ body {
     min-height: 150px;
     margin-bottom: 10px;
     margin-top: 5px;
+    width: 100%;
 }
 button:hover {
     background-color: rgb(187, 255, 0);

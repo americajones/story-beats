@@ -64,12 +64,14 @@ boxes.forEach(box => {
 
 /* Set the width of the side navigation to 250px */
 function openNav() {
-    document.getElementById("sidenav").style.width = "35vw";
+    document.getElementById("nav").style.width = "35vw";
+    document.querySelector(".open").style.visibility = "hidden"
     secrets.forEach(secret =>
         secret.style.visibility = 'visible')
 };
 function closeNav() {
-    document.getElementById("sidenav").style.width = "5vw";
+    document.getElementById("nav").style.width = "5vw";
+    document.querySelector(".open").style.visibility = "initial"
     secrets.forEach(secret =>
         secret.style.visibility = 'hidden')
 };
@@ -175,14 +177,18 @@ let endPoint;
 
 function makeOldLine(startpoint, endpoint) {
     if (startpoint && endpoint !== "") {
-        lines.push(new LeaderLine(startpoint, endpoint));
+        let line = new LeaderLine(startpoint, endpoint);
+        line.color = 'rgb(0, 255, 0)';
+        lines.push(line)
         storeOldLine(startpoint, endpoint);
         return lines;
     } else console.log("somethings fucked in the makeline, no startpoint, endpoint found")
 }
 function makeLine(startpoint, endpoint) {
     if (startpoint && endpoint !== "") {
-        lines.push(new LeaderLine(startpoint, endpoint));
+        let line = new LeaderLine(startpoint, endpoint);
+        line.color = 'rgb(0, 255, 0)';
+        lines.push(line)
         storeLine(startpoint, endpoint);
         return lines;
     } else console.log("somethings fucked in the makeline, no startpoint, endpoint found")
@@ -270,10 +276,15 @@ document.addEventListener('click', function (e) {
         return lineIdNum2;
     }
 })
-document.addEventListener('click', function (e) {
-    if (e.currentTarget !== isSelected) {
-        cards.forEach(card => card.classList.remove('selected'))
+window.onkeydown = function (event) {
+    if (event.keyCode === 32) {
+        event.preventDefault();
     }
-})
+};
+// document.addEventListener('click', function (e) {
+//     if (e.currentTarget !== isSelected) {
+//         cards.forEach(card => card.classList.remove('selected'))
+//     }
+// })
 
 //sidenav if closed clikc open
