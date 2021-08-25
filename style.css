@@ -33,12 +33,13 @@ body {
     text-align: left;
 }
 .beatBox p {
-    max-height: 7.5em;
+    max-height: 6.5em;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 .beatBox h2 {
     text-align: center;
+    margin: 10px;
 }
 .lineNode{
        background-color: black;
@@ -50,9 +51,9 @@ body {
 }
 .label {
     position: absolute;
-    top: 3px;
-    right: 50%;
-    color: rgb(172, 172, 172);
+    top: 10px;
+    left: 10px;
+    color: rgb(145, 145, 145);
 }
 .left{
     left: -20px;
