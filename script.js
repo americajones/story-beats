@@ -134,8 +134,8 @@ function spawnBox() {
     nuNode3.classList.add('label');
     nuNode3.textContent = nuId;
     nuBox.classList.add('beatBox');
-    nuBox.append(nuNode3, nuTit, nuText);
-    nuBox.append(nuNode, nuNode2);
+    nuBox.append(nuTit, nuText);
+    nuBox.append(nuNode, nuNode2, nuNode3);
     makeDraggable(nuBox);
     mainBox.append(nuBox);
     draggable = new PlainDraggable(nuBox);
