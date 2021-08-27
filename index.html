@@ -14,11 +14,11 @@
 <body>
     <nav id="nav">
         <div id="sidenav" class="sidenav">
-            <a href="javascript:void(0)" id="sidenavbutt" class="closebutt secret" onclick="closeNav()">&times;</a>
+            <a href="javascript:void(0)" id="sidenavbutt" class="closebutt secret out" onclick="closeNav()">&times;</a>
             <div class="addBox">
-                <button id="massSave" onclick="saveAll()">SAVE ALL</button>
+                <button id="massSave" class="out" onclick="saveAll()">SAVE ALL</button>
                 <p>add box:</p>
-                <button class="add" onclick="spawnBox()">+</button>
+                <button class="add out" onclick="spawnBox()">+</button>
             </div>
             <br>
             <!-- <div class="addBoxSettings secret">
@@ -34,7 +34,7 @@
                 <textarea id="textEdit"></textarea>
                 <button id="smallSave" onclick="saveChanges()">save box changes</button>
             </div>
-            <button id="export" onclick="concatinate()">EXPORT</button>
+            <button id="export" class="out" onclick="concatinate()">EXPORT</button>
         </div>
         <button class="open butt" onclick="openNav()">➔</button>
     </nav>

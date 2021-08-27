@@ -3,6 +3,7 @@ const titleEdit = document.querySelector('#titleEdit');
 const textEdit = document.querySelector('#textEdit');
 const boxes = document.querySelectorAll('.beatBox');
 const mainBox = document.querySelector('.mainBox');
+const nav = document.getElementById('nav');
 let cards = [];
 let lines = [];
 let loadList = {};
@@ -14,7 +15,7 @@ initLoad();
 function initLoad() {
     loadList = JSON.parse(localStorage.getItem('myStoryItems'));
     loadLinesList = JSON.parse(localStorage.getItem('myStoryLineItems'));
-    console.log("LINES LIST: ", loadLinesList);
+    // console.log("LINES LIST: ", loadLinesList);
     if (loadList === null) {
         spawnBox();
         return;
@@ -28,7 +29,7 @@ function secondaryLineLoad() {
     } else {
         loadLinesList.forEach(item => {
             loadLines(item);
-            console.log("this line is: ", item)
+            // console.log("this line is: ", item)
         });
     }
 }
@@ -57,24 +58,6 @@ function loadBox(object) {
     cards.push(nuBox);
 }
 
-boxes.forEach(box => {
-    draggable = new PlainDraggable(box);
-    draggable.autoScroll = true;
-})
-
-/* Set the width of the side navigation to 250px */
-function openNav() {
-    document.getElementById("nav").style.width = "35vw";
-    document.querySelector(".open").style.visibility = "hidden"
-    secrets.forEach(secret =>
-        secret.style.visibility = 'visible')
-};
-function closeNav() {
-    document.getElementById("nav").style.width = "5vw";
-    document.querySelector(".open").style.visibility = "initial"
-    secrets.forEach(secret =>
-        secret.style.visibility = 'hidden')
-};
 
 function saveChanges() {
     // console.log(isSelected.firstElementChild.textContent);
@@ -212,14 +195,14 @@ function makeId(num1, num2) {
 };
 function storeLine(start, end) {
     let ID = lineIdNum1 + "x" + lineIdNum2;
-    console.log("storline start obj: ", start);
-    console.log("storline end obj: ", end);
+    // console.log("storline start obj: ", start);
+    // console.log("storline end obj: ", end);
     lineKeepList.push([ID, start, end]);
 };
 function storeOldLine(start, end) {
-    console.log("oldstorline start obj: ", start);
-    console.log("oldstorline end obj: ", end);
-    console.log("oldstorline ID: ", start.parentElement.id + "x" + end.parentElement.id);
+    // console.log("oldstorline start obj: ", start);
+    // console.log("oldstorline end obj: ", end);
+    // console.log("oldstorline ID: ", start.parentElement.id + "x" + end.parentElement.id);
     let ID = start.parentElement.id + "x" + end.parentElement.id;
     lineKeepList.push([ID, start, end]);
 };
@@ -294,15 +277,40 @@ document.addEventListener('click', function (e) {
 // };
 
 //sidenav if closed clikc open
+boxes.forEach(box => {
+    draggable = new PlainDraggable(box);
+    draggable.autoScroll = true;
+})
 
+/* Set the width of the side navigation to 250px */
+function openNav() {
+    document.getElementById("nav").style.width = "35vw";
+    document.querySelector(".open").style.visibility = "hidden"
+    secrets.forEach(secret =>
+        secret.style.visibility = 'visible')
+};
+function closeNav() {
+    document.getElementById("nav").style.width = "5vw";
+    document.querySelector(".open").style.visibility = "initial"
+    secrets.forEach(secret =>
+        secret.style.visibility = 'hidden')
+};
+nav.addEventListener('click', function (e) {
+    if (!e.target.classList.contains('out') && document.getElementById("nav").style.width === "5vw") {
+        openNav();
+    } else if (e.target.classList.contains('open')) {
+        openNav();
+    }
+    else closeNav();
+})
 
 //export all -copy to clipboard
 let exportList
 function concatinate() {
     exportList = [];
     cards.forEach(item => {
-        console.log(item);
-        console.log(item.innerText);
+        // console.log(item);
+        // console.log(item.innerText);
         // console.log(item.attributes);
         // console.log("ID= ", item.attributes.id);
         // console.log("ID VALUE= ", item.attributes.id.value);
