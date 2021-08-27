@@ -64,7 +64,7 @@ body {
 }
 .selected {
     border: 50px grey;
-    background-color: rgba(255, 0, 212, 0.35);
+    background-color: rgba(255, 0, 0, 0.473);
 }
 .open:hover {
     font-weight: 600;
