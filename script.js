@@ -36,14 +36,7 @@ function secondaryLineLoad() {
 
 function loadBox(object) {
     let nuBox = document.createElement('div');
-    // let nuNode = document.createElement('div');
-    // let nuNode2 = document.createElement('div');
-    // nuNode.classList.add('lineNode');
-    // nuNode.classList.add('left');
-    // nuNode2.classList.add('lineNode');
-    // nuNode2.classList.add('right');
     nuBox.innerHTML = object.innerHTML;
-    // nuBox.append(nuNode, nuNode2);
     let nuId = object.id;
     nuBox.id = nuId;
     nuBox.style = object.style;
@@ -91,14 +84,6 @@ class storyBoxInfo {
         this.innerHTML = innerHTML;
     };
 }
-// class lineBoxInfo {
-//     constructor(outerHTML, style) {
-//         this.outerHTML = outerHTML;
-//         this.style = style;
-//         // this.start = start;
-//         // this.end = end;
-//     };
-// }
 
 //card constructor funtion- makes new card with unique ID
 function spawnBox() {
@@ -129,8 +114,6 @@ function spawnBox() {
     cards.push(nuBox);
     // console.log(cards.length);
 }
-
-
 
 //selected card-- if card selected, display card info 
 let isSelected;
@@ -253,36 +236,21 @@ document.addEventListener('click', function (e) {
         return lineIdNum2;
     }
 })
-// let activeClick = false;
-// mainBox.addEventListener('mousedown', function () {
-//     activeClick = true;
-// })
-// mainBox.addEventListener('mouseup', function () {
-//     activeClick = false;
-// })
-// window.onkeydown = function (event) {
-//     if (event.keyCode === 32) {
-//         event.preventDefault();
-//         mainBox.style.cursor = "grab";
-//     } else if (event.keyCode === 32 && activeClick) {
-//         mainBox.style.cursor = "grabbing";
-//     }
-// };
-// window.onkeyup = function (event) {
-//     if (event.keyCode === 32) {
-//         event.preventDefault();
-//         console.log("SPACEDOWN")
-//         mainBox.style.cursor = "default";
-//     }
-// };
 
-//sidenav if closed clikc open
 boxes.forEach(box => {
     draggable = new PlainDraggable(box);
     draggable.autoScroll = true;
 })
 
-/* Set the width of the side navigation to 250px */
+//sidenav close open
+
+function toggleNav() {
+    if (nav.style.width === "5vw") {
+        openNav();
+    } else if (nav.style.width === "35vw") {
+        closeNav();
+    }
+}
 function openNav() {
     document.getElementById("nav").style.width = "35vw";
     document.querySelector(".open").style.visibility = "hidden"
@@ -295,16 +263,15 @@ function closeNav() {
     secrets.forEach(secret =>
         secret.style.visibility = 'hidden')
 };
+
 nav.addEventListener('click', function (e) {
-    if (!e.target.classList.contains('out') && document.getElementById("nav").style.width === "5vw") {
-        openNav();
-    } else if (e.target.classList.contains('open')) {
-        openNav();
+    if (!e.target.classList.contains('out')) {
+        toggleNav();
     }
-    else closeNav();
 })
 
 //export all -copy to clipboard
+
 let exportList
 function concatinate() {
     exportList = [];

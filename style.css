@@ -14,6 +14,9 @@ body {
 #massSave:hover {
     background-color: rgb(187, 255, 0);
 }
+#massSave:active {
+    box-shadow: 0px 0px 0px 3px #ff0000;
+}
 #massSave {
     background-color: rgb(0, 255, 64);
     border: none;
@@ -86,7 +89,7 @@ body {
     margin-bottom: 2rem;
     margin-top: 4rem;
 }
-nav {
+#nav {
     height: 100%;
     width: 5vw;
     min-width: 75px;
@@ -104,7 +107,7 @@ nav {
     flex-direction: column;
     align-items: center;
 }
-nav a {
+#nav a {
       padding: 8px 8px 8px 32px;
       text-decoration: none;
       font-size: 25px;
@@ -112,10 +115,10 @@ nav a {
       display: block;
       transition: 0.3s;
 }
-nav a:hover {
+#nav a:hover {
     color: #f1f1f1;
 }
-nav .closebutt {
+#nav .closebutt {
     position: absolute;
     top: 0;
     right: 25px;

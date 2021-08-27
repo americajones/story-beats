@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <nav id="nav">
+    <nav id="nav" style="width: 5vw;">
         <div id="sidenav" class="sidenav">
             <a href="javascript:void(0)" id="sidenavbutt" class="closebutt secret out" onclick="closeNav()">&times;</a>
             <div class="addBox">
@@ -30,13 +30,13 @@
             </div> -->
             <div class="editBox secret">
                 <p>edit selected box:</p>
-                <input id="titleEdit">
-                <textarea id="textEdit"></textarea>
-                <button id="smallSave" onclick="saveChanges()">save box changes</button>
+                <input class="out" id="titleEdit">
+                <textarea class="out" id="textEdit"></textarea>
+                <button class="out" id="smallSave" onclick="saveChanges()">save box changes</button>
             </div>
             <button id="export" class="out" onclick="concatinate()">EXPORT</button>
         </div>
-        <button class="open butt" onclick="openNav()">➔</button>
+        <button class="open butt out" onclick="openNav()">➔</button>
     </nav>
     <div class="mainBox">
 
