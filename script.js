@@ -12,6 +12,7 @@ let lineKeepList = [];
 //load saved shit, if shit not found spawn blank first card
 initLoad();
 
+
 function initLoad() {
     loadList = JSON.parse(localStorage.getItem('myStoryItems'));
     loadLinesList = JSON.parse(localStorage.getItem('myStoryLineItems'));
@@ -34,13 +35,23 @@ function secondaryLineLoad() {
     }
 }
 
+function string_to_array(str) {
+    return str.trim().split(" ");
+};
+
 function loadBox(object) {
     let nuBox = document.createElement('div');
     nuBox.innerHTML = object.innerHTML;
     let nuId = object.id;
     nuBox.id = nuId;
     nuBox.style = object.style;
-    nuBox.classList.add('beatBox');
+    console.log(object.classes);
+    let classes = object.classes;
+    let classArray = string_to_array(classes);
+    classArray.forEach(clas => {
+        nuBox.classList.add(clas)
+    })
+    // nuBox.classList.add('beatBox');
     makeDraggable(nuBox);
     mainBox.append(nuBox);
     draggable = new PlainDraggable(nuBox);
@@ -68,7 +79,7 @@ function saveAll() {
         // console.log(item.attributes);
         // console.log("ID= ", item.attributes.id);
         // console.log("ID VALUE= ", item.attributes.id.value);
-        // console.log("classes= ", item.attributes.class.value);
+        console.log("classes= ", item.attributes.class.value);
         saveList.push(new storyBoxInfo(item.attributes.id.value, item.attributes.class.value, item.attributes.style.value, item.innerHTML));
     });
     saveLines();
@@ -299,4 +310,16 @@ const copyToClipboard = str => {
     document.execCommand('copy');
     document.body.removeChild(el);
     alert("All text copied to clipboard!");
+};
+
+function toggleSmallClass() {
+    if (isSelected.classList.contains('smallBox')) {
+        isSelected.classList.remove('smallBox')
+    } else isSelected.classList.add('smallBox');
+    fixLine();
+};
+function toggleColorClass() {
+    if (isSelected.classList.contains('colorBox')) {
+        isSelected.classList.remove('colorBox')
+    } else isSelected.classList.add('colorBox');
 };

@@ -23,7 +23,9 @@ body {
     padding: 10px;
     margin-bottom: 2rem;
 }
-
+button {
+    border: none;
+}
 
 .beatBox {
 
@@ -35,6 +37,13 @@ body {
     border-radius: 15px;
     padding: 15px;
     text-align: left;
+}
+.smallBox {
+    width: 200px;
+    height: 100px;
+}
+.colorBox {
+    background-color: rgb(85, 57, 109);
 }
 .beatBox p {
     max-height: 6.5em;
@@ -66,10 +75,7 @@ body {
 .right{
     right: -20px;
 }
-.selected {
-    border: 50px grey;
-    background-color: rgba(255, 0, 0, 0.473);
-}
+
 .open:hover {
     font-weight: 600;
 }
@@ -166,6 +172,11 @@ body {
 }
 button:hover {
     background-color: rgb(187, 255, 0);
+}
+.selected {
+    outline: 8px solid rgb(155, 155, 155);
+    outline-offset: -8px;
+    /* background-color: rgba(255, 0, 0, 0.473); */
 }
   /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
   @media screen and (max-height: 450px) {
