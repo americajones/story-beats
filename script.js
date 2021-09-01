@@ -135,6 +135,13 @@ function select(thisCard) {
     thisCard.classList.add('selected');
 }
 
+//delete box function that removes box, finds all lines with box id and removes them as well
+function deleteBox() {
+    removeLines(isSelected.id);
+    isSelected.remove();
+}
+
+
 //save start line point to a node, save end line point to a node, update to new positions when dragging
 function makeDraggable(card) {
     card.addEventListener("mousedown", function (e) {
@@ -200,10 +207,12 @@ function storeOldLine(start, end) {
     let ID = start.parentElement.id + "x" + end.parentElement.id;
     lineKeepList.push([ID, start, end]);
 };
-function removeLine(id) {
+function removeLines(leId) {
     for (let i = 0; i < lineKeepList.length; i++) {
-        if (lineKeepList[i].id === id) {
-            delete lineKeepList[i].id;
+        let string = lineKeepList[i][0];
+        if (string.includes(leId)) {
+            console.log('DELETING LINE', lineKeepList[i]);
+            lineKeepList.splice(i, 1);
         }
     };
 };
